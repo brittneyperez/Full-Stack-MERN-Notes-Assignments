@@ -3,11 +3,14 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const port = 8000;
 
+require('./config/mongoose.config');
 require('./routes/product.routes')(app);
-/* Above code is same as writing:
+/* Code above is same as writing:
     const ProductRoutes = require("./routes/product.routes");
     productRoutes(app);
 */
