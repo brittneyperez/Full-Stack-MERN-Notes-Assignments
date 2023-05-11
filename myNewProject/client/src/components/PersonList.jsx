@@ -1,5 +1,6 @@
 import React, { useEffect} from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const PersonList = ({ people, setPeople }) => {
     /* 
@@ -22,9 +23,17 @@ const PersonList = ({ people, setPeople }) => {
     
     return (
         <div>
-            { people.map((person, index)=>{
-                return <p key={index}>{person.lastName}, {person.firstName}</p>
-                }) }
+            {
+                people.map((person, index)=>{
+                    return (
+                        <div key={index}>
+                            <p>{person.lastName}, {person.firstName}</p>
+                            <Link to={`/people/${person._id}`}>{ person.firstName }'s Page</Link>
+                            <hr style={{width: '250px', margin:' 10px auto'}} />
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }
