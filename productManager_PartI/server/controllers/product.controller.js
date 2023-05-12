@@ -11,3 +11,15 @@ module.exports.createProduct = (request, response) => {
         .then(person => response.json(person))
         .catch(err => response.json(err));
 }
+
+module.exports.getAllProducts = (request, response) => {
+    Product.find({})
+        .then(products => {
+            console.log(products);
+            response.json(products);
+        })
+        .catch(err => {
+            console.log(err);
+            response.json(err);
+        });
+}
