@@ -4,6 +4,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Main from './views/Main'
 import Detail from './components/Detail';
+import UpdatePersonForm from './components/UpdatePersonForm';
 // import PersonForm from './components/PersonForm';
 // import PersonList from './components/PersonList';
 
@@ -14,8 +15,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Main />} path="/home" default />
-          <Route element={<Detail />} path="/people/:id" />
           {/* The :id part of the path is the variable taht we must give value to */}
+          <Route element={<Detail />} path="/people/:id" />
+          <Route element={<UpdatePersonForm />} path="/people/edit/:id" />
         </Routes>
       </BrowserRouter>
     </div>

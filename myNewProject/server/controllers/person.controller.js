@@ -6,6 +6,7 @@ module.exports.index = (request, response) => {
     });
 }
 
+// CREATE
 module.exports.createPerson = (request, response) => {
     /* 
         Mongoose's "create" method is run using our Person 
@@ -18,6 +19,7 @@ module.exports.createPerson = (request, response) => {
             .catch(err => response.json(err));
 }
 
+// READ ALL
 module.exports.getAllPeople = (request, response) => {
     Person.find({})
         .then(persons => {
@@ -29,9 +31,23 @@ module.exports.getAllPeople = (request, response) => {
             response.json(err)
         });
 }
-
+// READ ONE
 module.exports.getPerson = (request, response) => {
     Person.findOne({ _id: request.params.id })
         .then(person => response.json(person))
         .catch(err => response.json(err));
+}
+
+// UPDATE
+module.exports.updatePerson = (request, response) => {
+    Person.findByIdAndUpdate({ _id: request.params.id }, request.body, {new: true})
+        .then(updatedPerson => response.json(updatedPerson))
+        .catch(err => response.json(err))
+}
+
+// DELETE
+module.exports.deletePerson = (request, response) => {
+    Person.findByIdAndDelete({ _id: request.params.id }) // note: "id" MUST match to corresponding route
+        .then(deleteConfirmation => response.json(deleteConfirmation))
+        .catch(err => response.json(err))
 }
