@@ -1,1 +1,0 @@
-Attempt two on CORE Assingment #23: Authors
