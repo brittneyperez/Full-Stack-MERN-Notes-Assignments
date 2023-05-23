@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import DisplayAuthors from './components/DisplayAuthors';
 import CreateAuthor from './components/CreateAuthor';
 import Navigation from './components/Navigation';
-import UpdateAuthor from './components/UpdateAuthor';
+import UpdateTest from './components/UpdateTest';
+// import UpdateAuthor from './components/UpdateAuthor';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={ <DisplayAuthors /> } />
           <Route path="/authors/create" element={ <CreateAuthor /> } />
-          <Route path="/author/edit/:id" element={ <UpdateAuthor /> } />
+          {/* <Route path="/author/edit/:id" element={ <UpdateAuthor /> } /> */}
+          <Route path="/author/edit/:id" element={ <UpdateTest /> } />
         </Routes>
       </BrowserRouter>
       

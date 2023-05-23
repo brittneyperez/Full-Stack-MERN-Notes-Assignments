@@ -18,7 +18,7 @@ const DisplayAuthors = () => {
             })
     }, [])
     
-    const deleteHandler = (id) => {
+    const deleteHandler = (id) => { // ? this is referring to the id that's being mapped
         axios.delete(`http://localhost:8000/api/author/delete/${id}`)
             .then((res) => {
                 console.log('Author deletion successful!')

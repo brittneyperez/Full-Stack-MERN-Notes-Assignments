@@ -30,7 +30,7 @@ module.exports = {
                 console.log(author)
                 res.status(200).json(author)
             })
-            .catch((err) => res.status(400).json({ message: 'Something went wrong...', error: err }))
+            .catch((err) => res.status(400).json(err))
     },
     // DELETE
     deleteAuthor: (req, res) => {
