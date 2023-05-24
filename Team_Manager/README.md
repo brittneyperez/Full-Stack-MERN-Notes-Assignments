@@ -1,0 +1,3 @@
+## Team Manger
+
+**Synopsis**: Create an App 'Team Manager' which manages your team roster and RSVP for a 3 game series. Specifically, we should be able to add and remove players. We should also be able to view each player's status of 'Playing', 'Not Playing' and 'Undecided' for each of the 3 games. More details are included in the below wireframe. Make sure you read through the tasks below to understand which features are bonuses.
