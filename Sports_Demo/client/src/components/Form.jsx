@@ -22,19 +22,19 @@ const Form = ({ onSubmitHandler, initialFirstName, initialLastName, initialSport
         <form onSubmit={(e) =>  { onSubmitHandler(e, { firstName, lastName, sport, team }) }}>
             <p>
                 <label>First Name:</label>
-                <input type="text" name="firstName" value={ firstName } onChange={(e) => (setFirstName(e.target.value))} />
+                <input type="text" name="firstName" value={ firstName } onChange={(e) => (setFirstName(e.target.value))} autoComplete='off' />
             </p>
             <p>
                 <label>Last Name:</label>
-                <input type="text" name="lastName" value={ lastName } onChange={(e) => (setLastName(e.target.value))} />
+                <input type="text" name="lastName" value={ lastName } onChange={(e) => (setLastName(e.target.value))} autoComplete='off' />
             </p>
             <p>
                 <label>Sport:</label>
-                <input type="text" name="sport" value={ sport } onChange={(e) => (setSport(e.target.value))} />
+                <input type="text" name="sport" value={ sport } onChange={(e) => (setSport(e.target.value))} autoComplete='off' />
             </p>
             <p>
                 <label>Team:</label>
-                <input type="text" name="team" value={ team } onChange={(e) => (setTeam(e.target.value))} />
+                <input type="text" name="team" value={ team } onChange={(e) => (setTeam(e.target.value))} autoComplete='off' />
             </p>
             <input type="submit" value="Submit" />
         </form>

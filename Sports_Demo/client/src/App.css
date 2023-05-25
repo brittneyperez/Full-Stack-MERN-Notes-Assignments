@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.nav__header {
+  background-color: rgb(213, 235, 254);
+  /* width:'1000px'; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  gap: 3rem;
+}

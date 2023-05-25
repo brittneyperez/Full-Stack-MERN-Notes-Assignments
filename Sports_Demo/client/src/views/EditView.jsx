@@ -6,11 +6,13 @@ import Form from '../components/Form'
 
 const EditView = () => {
     
-    const { id } = useParams(); // this will present the id we input in the URL
+    // If id is passed with useParams, the GET request data is able to be loaded
+    const { id } = useParams();
     const navigate = useNavigate();
     
     const [ athlete, setAthlete ] = useState({}) // object
     const [ loaded, setLoaded ] = useState(false) // boolean
+    const [ errors, setErrors ] = useState([]); // array
     
     useEffect(() => {
         axios.get(`http://localhost:8000/api/readAthlete/${id}`)
@@ -40,10 +42,20 @@ const EditView = () => {
         axios.patch(`http://localhost:8000/api/updateAthlete/${id}`, data)
             .then((response) => {
                 console.log(response);
-                // navigate('/')
+                navigate('/')
             })
             .catch((err) => {
                 console.log(err);
+                
+                // * Setup Error
+                // ? This will retrieve our errors, save it in state, and then display them
+                const errorResponse = err.response.data.errors;
+                const errorArr = [];
+                
+                for (const key of Object.keys(errorResponse)) {
+                    errorArr.push(errorResponse[key].message);
+                }
+                setErrors(errorArr)
             });
     }
     
@@ -51,6 +63,13 @@ const EditView = () => {
         <div>
             <h1>Editing { athlete.firstName } { athlete.lastName }</h1>
             <h3>ID: {id}</h3>
+            
+            { errors.map((error, index) => {
+                return(
+                    <p key={index} style={{color:'red'}}>{ error }</p>
+                )
+            }) }
+            
             { loaded && 
                 <Form 
                     onSubmitHandler={ onSubmitHandler }
@@ -60,7 +79,7 @@ const EditView = () => {
                     initialTeam = { athlete.team }
                 />
             }
-            <DeleteButton />
+            <DeleteButton id={athlete._id} />
         </div>
     )
 }

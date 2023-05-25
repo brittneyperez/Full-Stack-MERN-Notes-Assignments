@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 const CreateView = () => {
     
     const navigate = useNavigate();
-    
     const [ errors, setErrors ] = useState([]); // array
     
     const onSubmitHandler = (e, data) => {
@@ -20,7 +19,7 @@ const CreateView = () => {
             .catch((err) => {
                 console.log(err);
                 
-                // TODO: Setup Error
+                // * Setup Error
                 // ? This will retrieve our errors, save it in state, and then display them
                 const errorResponse = err.response.data.errors;
                 const errorArr = [];
@@ -44,7 +43,7 @@ const CreateView = () => {
             
             <Form 
                 onSubmitHandler={ onSubmitHandler }
-                // ? This is added so that data won't prepopulate in the CreateView
+                // ? The lines below are added so that data won't prepopulate in the CreateView
                 initialFirstName=""
                 initialLastName=""
                 initialSport=""

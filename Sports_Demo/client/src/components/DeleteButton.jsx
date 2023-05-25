@@ -1,25 +1,25 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-
 import axios from 'axios';
-const DeleteButton = () => {
+
+const DeleteButton = ({ id }) => {
+    // {id} is passed through props to come front the url in the App.js
     
-    const { id } = useParams();
     const navigate = useNavigate();
     
-    const onClickHandler = (e) => {
+    const onClickHandler = e => {
         axios.delete(`http://localhost:8000/api/deleteAthlete/${id}`)
-            .then(response => {
+            .then((response) => {
                 console.log(response.data)
                 navigate('/')
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err)
             })
     }
     
     return (
-        <button onClick={ onClickHandler } style={{marginTop:"0.5rem"}}>Delete Button</button>
+        <button onClick={ onClickHandler } style={{marginTop:"0.5rem"}}>Delete</button>
     )
 }
 

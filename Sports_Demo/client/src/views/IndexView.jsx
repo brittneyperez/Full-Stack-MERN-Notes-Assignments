@@ -10,18 +10,19 @@ const IndexView = () => {
     useEffect(() => {
         axios.get("http://localhost:8000/api/athletes")
             .then((response) => {
-                console.log(response.data)
-                setAthletes(response.data)
+                console.log(response.data);
+                setAthletes(response.data);
+                // ! HOW TO RERENDER PAGE AFTER DELETE WHEN IT COMES FROM A DIFFERENT COMPONENT
             })
             .catch((err) => {
-                console.log(err)
+                console.log(err);
             })
     }, [])
     
     
     return (
         <div>
-            <h1>Practice Assignment #23: Sports Demo</h1>
+            <h2>Displaying All Athletes</h2>
             
             <table style={{marginLeft:"auto",marginRight:"auto",marginTop:"2rem"}}>
                 <thead>
@@ -31,13 +32,6 @@ const IndexView = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* hardcoding for testing and setting up purposes
-                        <tr>
-                            <td><Link to={'/3'}>John Doe</Link></td>
-                            <td><Link to={'/3/edit'}><button>Edit</button></Link> | <DeleteButton /></td>
-                        </tr>
-                    */}
-                    
                     { //       athlete obj with their corresponding key
                         athletes.map((athlete, index) => (
                             <tr key={ index }>
@@ -45,19 +39,17 @@ const IndexView = () => {
                                     <Link to={`/athlete/${athlete._id}`}>{ athlete.firstName } { athlete.lastName }</Link>
                                 </td>
                                 
-                                <td style={{display:'flex',alignItems:'center',gap:'1rem'}}>
-                                    <Link to={`/athlete/${athlete._id}/edit`}>
-                                        <button>Edit</button>
-                                    </Link> 
-                                    <DeleteButton _id={ athlete._id }
-                                    // ! Delete Button NOT working
-                                    />
+                                <td style={{display:'flex', alignItems:'center', gap:'1rem'}}>
+                                    <Link to={`/athlete/${athlete._id}/edit`}><button style={{marginTop:"0.5rem"}}>Edit</button></Link> 
+                                    
+                                    <DeleteButton id={athlete._id} />
                                 </td>
                             </tr>
                         ))
                     }
                 </tbody>
             </table>
+            <p>Practice Assignment #23 © Coding Dojo 2023</p>
         </div>
     )
 }

@@ -9,11 +9,15 @@ function App() {
   return (
       <div className="App">
         <BrowserRouter>
-          <div id="nav__links" style={{display:'flex',justifyContent:'center',gap:'0.5rem',marginTop:'2rem'}}>
-            <Link to={'/'}>Home</Link>
-            |
-            <Link to={'/create'}>Add Athlete</Link>
+          <div className='nav__header'>
+            <h1>SportsDemo</h1>
+            <div id="nav__links" style={{display:'flex',gap:'0.5rem'}}>
+              <Link to={'/'}>Home</Link>
+              |
+              <Link to={'/create'}>Add Athlete</Link>
+            </div>
           </div>
+          
           <Routes>
             <Route path='/' element={ <IndexView /> } />
             <Route path='/create' element={ <CreateView /> } />
